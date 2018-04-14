@@ -9,7 +9,7 @@
  * Description: main program for assignment 5
  *				main job is to start up the gui
  *
- * Input:
+ * Input:       
  *
  * Output: 
  ***********************************************************************/
@@ -26,30 +26,20 @@ public class PokemonMain {  // begin class
     // ********* declaration of constants **********
     
     // ********** declaration of variables **********
-    
-    	
-    	
-    // create an instance of the ConsoleReader so that we can read data from the keyboard
-    
-    	
-    	
+
     // ********** Print output Banner **********
-    
-    	
     	
     // ************************ get input **********************
-
-    	
-
+    
     // ************************ processing ***************************
 	
         
-        pokeGUI pokeUI = new pokeGUI();
-        pokeUI.setVisible(true);
+        pokeGUI pokeUI = new pokeGUI(); //initializes gui
+        pokeUI.setVisible(true);        //make the GUI visible on program start
 		
-        Controller controller = new Controller();
-        controller.addUI(pokeUI);
-        pokeUI.addController(controller);
+        Controller controller = new Controller(); //intitialize controller
+        controller.addUI(pokeUI);                 //adds GUI
+        pokeUI.addController(controller);         //adds controller
         
  
     // ************************ print output ****************************

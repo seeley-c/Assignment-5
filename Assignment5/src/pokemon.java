@@ -26,17 +26,17 @@ import java.util.ArrayList;
  	
          private enum species {
              Pikachu, Squirtle, Charmander, Bulbasaur, Ninetails, Camerupt;
-         }
+         } //end species enum
  	
  	// ********** instance variable **********
 
-	 private String nick = "";
-         private int att = 0;
-         private int def = 0;
-         private int hp = 0;
-         private int speed = 0;
-         private int level = 0;
-         private species Species = null;
+	 private String nick = "";      //new string for nickname
+         private int att = 0;           //new int for attack
+         private int def = 0;           //new int for defence
+         private int hp = 0;            //new int for hp
+         private int speed = 0;         //new int for speed
+         private int level = 0;         //new int for level
+         private species Species = null;//new species enum
          
  	// ********** constructors ***********
          
@@ -80,35 +80,81 @@ import java.util.ArrayList;
 	 
  	
  	// ********** accessors **********
- 	
+        
+            //*****************************************************
+            // Purpose: get nickname of pokemon
+            // Interface: IN: none
+            // Returns: nickname of pokemon
+            // *****************************************************
             public String getNick() {
                 return nick;
             } //end getNick
-
+            
+            //*****************************************************
+            // Purpose: get attack of pokemon
+            // Interface: IN: none
+            // Returns: attack (int)
+            // *****************************************************
             public int getAtt() {
                 return att;
             } //end getAtt
-
+            
+            //*****************************************************
+            // Purpose: get defence of pokemon
+            // Interface: IN: none
+            // Returns: defence (int)
+            // *****************************************************
             public int getDef() {
                 return def;
             } //end getDef
-
+            
+            //*****************************************************
+            // Purpose: get hp of pokemon
+            // Interface: IN: none
+            // Returns: hp (int)
+            // *****************************************************
             public int getHp() {
                 return hp;
             } //end getHp
-
+            
+            //*****************************************************
+            // Purpose: get speed of pokemon
+            // Interface: IN: none
+            // Returns: speed (int)
+            // *****************************************************
             public int getSpeed() {
                 return speed;
             } //end getSpeed
-
+            
+            //*****************************************************
+            // Purpose: get level of pokemon
+            // Interface: IN: none
+            // Returns: level (int)
+            // *****************************************************
             public int getLevel() {
                 return level;
             } //end getLevel
-
+            
+            //*****************************************************
+            // Purpose: get species of pokemon
+            // Interface: IN: none
+            // Returns: species (enum)
+            // *****************************************************
             public species getSpecies() {
                 return Species;
             } //end getSpecies
-	 
+            
+            //*****************************************************
+            // Purpose: gets properties of pokemon
+            // Interface: IN: none
+            // Returns: nickname (string)
+            //          species (enum)
+            //          level (int)
+            //          hp (int)
+            //          attack (int)
+            //          defence (int)
+            //          speed (int)
+            // *****************************************************
             public String toString() {
                 String output;
                 
@@ -125,7 +171,12 @@ import java.util.ArrayList;
             
 	 
  	// ********** mutators **********
-
+            
+            //*****************************************************
+            // Purpose: train selected pokemon
+            // Interface: IN: none
+            // Returns: none
+            // *****************************************************
             public void train() {
                 level = ++level;
                 hp = hp + (int) (Math.random() * 2 + 1);
@@ -134,6 +185,11 @@ import java.util.ArrayList;
                 speed = speed + (int) (Math.random() * 2 + 1);
             } //end train
             
+            //*****************************************************
+            // Purpose: set nickname of pokemon
+            // Interface: IN: String nm: 
+            // Returns: none
+            // *****************************************************
             public void setName(String nm) {
                 nick = nm;
             } //end setName

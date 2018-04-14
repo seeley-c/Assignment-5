@@ -22,7 +22,7 @@ public class pokeGUI extends javax.swing.JFrame {
     
     
     protected Controller c;			// controller object
-    protected DefaultListModel pokeListModel = new DefaultListModel();
+    protected DefaultListModel pokeListModel = new DefaultListModel(); //new list model for pokemon
     
     
 
@@ -47,7 +47,6 @@ public class pokeGUI extends javax.swing.JFrame {
         PokeInfo = new javax.swing.JPanel();
         TrainButton = new javax.swing.JButton();
         RenameButton = new javax.swing.JButton();
-        ReleaseButton = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         pokeDetailTxt = new javax.swing.JTextArea();
         enterName = new javax.swing.JTextField();
@@ -141,15 +140,6 @@ public class pokeGUI extends javax.swing.JFrame {
             }
         });
 
-        ReleaseButton.setBackground(new java.awt.Color(204, 0, 0));
-        ReleaseButton.setForeground(new java.awt.Color(255, 255, 255));
-        ReleaseButton.setText("Release");
-        ReleaseButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ReleaseButtonActionPerformed(evt);
-            }
-        });
-
         pokeDetailTxt.setColumns(20);
         pokeDetailTxt.setRows(5);
         jScrollPane3.setViewportView(pokeDetailTxt);
@@ -172,14 +162,12 @@ public class pokeGUI extends javax.swing.JFrame {
                 .addGroup(PokeInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PokeInfoLayout.createSequentialGroup()
                         .addComponent(TrainButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ReleaseButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(RenameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(enterName, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(SubmitNameButton))
+                        .addGap(18, 18, 18)
+                        .addComponent(enterName, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(SubmitNameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane3))
                 .addContainerGap())
         );
@@ -193,7 +181,6 @@ public class pokeGUI extends javax.swing.JFrame {
                     .addComponent(TrainButton)
                     .addComponent(RenameButton)
                     .addComponent(enterName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ReleaseButton)
                     .addComponent(SubmitNameButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -255,64 +242,51 @@ public class pokeGUI extends javax.swing.JFrame {
     
     
     private void KeepButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KeepButtonActionPerformed
-        c.keepGenPoke();
-        this.clearText();//clear text field
+        c.keepGenPoke();    //accesses controller function to keep generated pokemon
+        this.clearText();   //clear text field
         
-        
-        KeepButton.setEnabled(false);
+        KeepButton.setEnabled(false);    //set discard and keep buttons to false
         DiscardButton.setEnabled(false);
     }//GEN-LAST:event_KeepButtonActionPerformed
 
     private void DiscardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DiscardButtonActionPerformed
-        this.clearText();//clear text field
-        KeepButton.setEnabled(false);
+        this.clearText();   //clear text field
+        KeepButton.setEnabled(false);    //set discard and keep buttons to false
         DiscardButton.setEnabled(false);
     }//GEN-LAST:event_DiscardButtonActionPerformed
 
     private void CatchNewPokeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CatchNewPokeActionPerformed
-        c.createPoke();
-        newPokeInfo.setText(c.toStringPoke());
+        c.createPoke();     //accesses controller function to create new poke
+        newPokeInfo.setText(c.toStringPoke()); //
         KeepButton.setEnabled(true);
         DiscardButton.setEnabled(true);
     }//GEN-LAST:event_CatchNewPokeActionPerformed
 
     private void TrainButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TrainButtonActionPerformed
-
-        pokeDetailTxt.setText(c.trainPoke());
+        pokeDetailTxt.setText(c.trainPoke()); //access train function in controller
     }//GEN-LAST:event_TrainButtonActionPerformed
 
     private void RenameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RenameButtonActionPerformed
-        enterName.setEnabled(true);
+        enterName.setEnabled(true);         //enable text field and submit button
         SubmitNameButton.setEnabled(true);
     }//GEN-LAST:event_RenameButtonActionPerformed
 
-    private void ReleaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReleaseButtonActionPerformed
-        int n = pokeList.getSelectedIndex();
-        
-        if (n != -1) {
-            //c.releasePoke(n);
-            pokeListModel.remove(n);
-        }
-        
-        pokeDetailTxt.setText("You just released the Pokemon");
-    }//GEN-LAST:event_ReleaseButtonActionPerformed
-
     private void SubmitNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitNameButtonActionPerformed
-        int n = pokeList.getSelectedIndex();
-        String nm = enterName.getText();
+        int n = pokeList.getSelectedIndex();    //get selected pokemon
+        String nm = enterName.getText();        //string nm for name entered in text field
         
-        c.renamePoke(nm);
+        c.renamePoke(nm);       //access rename function in controller
         
-        enterName.setEnabled(false);
+        enterName.setEnabled(false);        //disable name field and submit button
         SubmitNameButton.setEnabled(false);
-        pokeDetailTxt.setText(c.getPoke(n));
+        pokeDetailTxt.setText(c.getPoke(n)); //set text field to pokemon properties
     }//GEN-LAST:event_SubmitNameButtonActionPerformed
 
     private void pokeListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_pokeListValueChanged
-        int n = pokeList.getSelectedIndex();
-        pokeDetailTxt.setText(c.getPoke(n));
+        int n = pokeList.getSelectedIndex();    //get selected pokemon
+        pokeDetailTxt.setText(c.getPoke(n));    //set the text to the pokemon's properties
         
-        enterName.setEnabled(false);
+        enterName.setEnabled(false);        //disabled enter name field and submit button
         SubmitNameButton.setEnabled(false);
     }//GEN-LAST:event_pokeListValueChanged
 
@@ -323,11 +297,17 @@ public class pokeGUI extends javax.swing.JFrame {
     // Returns: none
     // ***************************************************** 
 	 protected void addController(Controller c){
-		 this.c = c;
+		 this.c = c; //adds controller
 	 } // end addUI	
          
+         
+        //*****************************************************
+        // Purpose: clears text field
+        // Interface: IN: none
+        // Returns: none
+        // ***************************************************** 
          protected void clearText() {
-             newPokeInfo.setText("");
+             newPokeInfo.setText("");   //clears text
          } //end clearText
     
     
@@ -341,7 +321,6 @@ public class pokeGUI extends javax.swing.JFrame {
     private javax.swing.JPanel PokeInfo;
     private javax.swing.JLabel PokeInfoLabel;
     private javax.swing.JScrollPane PokeList;
-    private javax.swing.JButton ReleaseButton;
     private javax.swing.JButton RenameButton;
     private javax.swing.JButton SubmitNameButton;
     private javax.swing.JButton TrainButton;
